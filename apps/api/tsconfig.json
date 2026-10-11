@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "@universal-pos/shared": ["../../packages/shared/dist"],
+      "@universal-pos/contracts": ["../../packages/contracts/dist"]
+    }
+  },
+  "include": ["src/**/*"]
+}

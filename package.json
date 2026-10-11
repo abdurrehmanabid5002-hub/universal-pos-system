@@ -1,0 +1,29 @@
+{
+  "name": "universal-pos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Commercial multi-tenant Point of Sale platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@universal-pos/shared && npm run build --workspace=@universal-pos/contracts && npm run build --workspace=@universal-pos/api && npm run build --workspace=@universal-pos/web",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "db:migrate": "node database/migrate.js",
+    "db:seed": "node database/seed.js",
+    "db:start": "powershell -Command \"& 'C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe' -D 'd:\\universal-pos\\.pgdata' -l 'd:\\universal-pos\\.pgdata\\server.log' -o '-p 5433' start\"",
+    "db:stop": "powershell -Command \"& 'C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe' -D 'd:\\universal-pos\\.pgdata' stop\"",
+    "dev:api": "npm run start:dev --workspace=@universal-pos/api",
+    "dev:web": "npm run dev --workspace=@universal-pos/web"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "pg": "^8.23.1"
+  }
+}
